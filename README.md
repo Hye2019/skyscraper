@@ -10,5 +10,5 @@
     - Run __pipenv shell__ to activate the virtual environment.
     - Run "python _3MAIN_DATAFRAME.py" to start program.
     
-- &#x1F53A;_**PRIVATEKEY PASSWORD IS "whyisitsohawt!10"**_&#x1F53A;
+- &#x1F53A;_**PRIVATEKEY PASSWORD IS "polarvortex"**_&#x1F53A;
 - &#x1F53A;_**DATABASE USERNAME & PASSWORD IS "skyScraper", "skyscraperchina4"**_&#x1F53A;
