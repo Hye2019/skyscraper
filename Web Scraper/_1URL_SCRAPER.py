@@ -74,6 +74,7 @@ def SelectRegion(driver):
         
         # Select geo area by user input.
         try:
+            print("Try 'Powell River'!")
             geoAnswer = input("Enter exact geographical region as written on site ")
             geographicDropdown.select_by_visible_text(geoAnswer)
             return geoAnswer
@@ -129,10 +130,12 @@ def ScrapeMLS(currentPage, driver, STARTMLSDIG, ENDMLSDIG):
                 if MLS == '':
                     continue
 
-                print(MLS)
+                #print(MLS)
             
                 #add mls number to list.
                 MLSs.append(MLS)
+
+                print(f"Found {len(MLSs)} unique properties...")
         
         # Cleanup variable- moving onto next page.
         MLS = ""
@@ -142,20 +145,21 @@ def ScrapeMLS(currentPage, driver, STARTMLSDIG, ENDMLSDIG):
             testNextButton = driver.find_element_by_xpath(NEXTBUTTON)
             try:
                 isNextButtonDisplayed = testNextButton.is_displayed()
-                print(isNextButtonDisplayed)
+                #print(isNextButtonDisplayed)
                 break
             except:
-                print("Next button display check is broken, resetting definition...")
+                #print("Next button display check is broken, resetting definition...")
+                pass
 
         if (isNextButtonDisplayed == True):
-            print("keep flipping")
+            #print("keep flipping")
             #time.sleep(10)
             while True:
                 try:
                     nextButton.click()
                     break
                 except:
-                    print("Next button is broken, resetting definition...")
+                    #print("Next button is broken, resetting definition...")
                     nextButton = driver.find_element_by_xpath(NEXTBUTTON)
             driver.implicitly_wait(.3)
             #driver.switch_to.frame("searchFrame")
@@ -208,7 +212,7 @@ def main(browserOptions, browserPath):
     #Selenium hands the page source to Beautiful Soup
     # Initial Page
     currentPage=BeautifulSoup(driver.page_source, 'lxml')
-
+    print("Beginning scrape...")
     MLSs = ScrapeMLS(currentPage, driver, STARTMLSDIG, ENDMLSDIG)
             
     #Done gathering mls numbers, add them to urls.

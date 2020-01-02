@@ -79,6 +79,7 @@ def SSHTunnel():
 def GetDBCredentials():
     ''' ask for credentials to database '''
     CheckKey()
+    print("Refer to github readme.")
     print("Enter database username: ")
     username = InputString()
     print("Enter database password: ")
